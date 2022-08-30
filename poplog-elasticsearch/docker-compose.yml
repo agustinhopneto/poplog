@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  elasticsearch:
+    container_name: poplog-elasticsearch
+    image: bitnami/elasticsearch:latest
+    ports:
+      - 9300:9300
+      - 9200:9200
+    environment:
+      - ELASTICSEARCH_PORT_NUMBER=9200
+      - ELASTICSEARCH_NODE_PORT_NUMBER=9300
+    networks:
+      - poplog-network
+
+networks:
+  poplog-network:
+    external:
+      name: poplog_network
